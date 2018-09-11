@@ -627,6 +627,19 @@ export default class JiraApi {
     );
   }
 
+  getAssignableUsersInProject(projectId) {
+    return this.doRequest(
+      this.makeRequestHeader(this.makeUri({
+        pathname: '/user/assignable/search',
+        query: {
+          project:projectId
+        },
+      }), {
+        followAllRedirects: true,
+      }),
+    );
+  }
+
   /** Get issues related to a user
    * [Jira Doc](http://docs.atlassian.com/jira/REST/latest/#id296043)
    * @name getUsersIssues
